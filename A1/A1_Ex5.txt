@@ -1,0 +1,25 @@
+------------------------------------------
+G2_team01
+William Gyrulf
+Jakub Haczkiewicz
+
+Disclosure: to perform this exercise, I have utilised external resources and assistance:
+    - Medium.com [https://medium.com/@noransaber685/understanding-the-stack-data-structure-in-c-introduction-implementation-and-examples-8d3fb03de809]
+------------------------------------------
+
+(1)
+
+This exercise asked to implement a stack using either an array or linked list.
+Also, implement the operations push and pop for it.
+We used a simply linked list to do this.
+
+The code is implemented in the following file:
+    - A1_Ex5.c
+
+Code Execution:
+To compile and execute the code:
+    $ gcc -o A1_Ex5 A1_Ex5.c
+    $ ./A1_Ex5
+
+(2)
+
