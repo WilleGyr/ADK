@@ -79,6 +79,16 @@ void freeList(List* L) {
     }
 }
 
+// Define the printList function
+void printList(List* L) {
+    Node* currentNode = L->head; // Start from the head
+    while(currentNode != NULL) { // Loop through the list
+        printf("%d ", currentNode->data); // Print the data of the current node
+        currentNode = currentNode->next; // Move to the next node
+    }
+    printf("\n");
+}
+
 int main(){
     // Create the new list
     List* L = (List*)malloc(sizeof(List));
@@ -88,12 +98,12 @@ int main(){
     int Personnr[] = {2, 0, 0, 3, 1, 1, 1, 2, 1, 2, 3, 4};
 
     // Create and prepend nodes to the list
-    for (int i = 0; i < 12; i++) {
+    for (int i = 11; i >= 0; i--) {
         Node* newNode1 = createNode(Personnr[i]);
         prepend(L, newNode1);
     }
 
-    printf("Count of 0 in presonnummer: %d\n", countKey(L, 0));
+    printf("Count of 0 in presonnummer: %d\n", countKey(L, 99));
 
     freeList(L);
 }

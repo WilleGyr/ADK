@@ -177,6 +177,7 @@ void freeList(List* L) {
         free(currentNode); // Free the current node
         currentNode = nextNode; // Move to the next node
     }
+    free(L); // Free the list
 }
 
 int main() {
@@ -184,7 +185,7 @@ int main() {
     List* L1 = (List*)malloc(sizeof(List));
     L1->head = NULL;
     L1->tail = NULL;
-    
+
     List* L2 = (List*)malloc(sizeof(List));
     L2->head = NULL;
     L2->tail = NULL;
@@ -202,15 +203,17 @@ int main() {
         prepend(L2, newNode2);
     }
 
-    //printf("Is the list empty? %d\n", isEmpty(L1));
-    //printf("List 1 has maximum: %d\n", maximum(L1)->data);
-    //printf("List 1 has minimum: %d\n", minimum(L1)->data);
-    //printf("List 2 has maximum: %d\n", maximum(L2)->data);
-    //printf("List 2 has minimum: %d\n", minimum(L2)->data);
+    insert(L1, createNode(99),L1->head->next);
+    
+    printf("Is the list empty? %d\n", isEmpty(L1));
+    printf("List 1 has maximum: %d\n", maximum(L1)->data);
+    printf("List 1 has minimum: %d\n", minimum(L1)->data);
+    printf("List 2 has maximum: %d\n", maximum(L2)->data);
+    printf("List 2 has minimum: %d\n", minimum(L2)->data);
 
-    //printf("Predecessor of %d in list 1: %d\n", search(L1, 5)->data, predecessor(L1, search(L1, 5))->data);
-    //printf("Successor of %d in list 1: %d\n", search(L1, 5)->data, successor(L1, search(L1, 5))->data);
-    //printf("Predecessor of %d in list 2: %d\n", search(L2, 9)->data, predecessor(L2, search(L2, 9))->data);
+    printf("Predecessor of %d in list 1: %d\n", search(L1, 5)->data, predecessor(L1, search(L1, 5))->data);
+    printf("Successor of %d in list 1: %d\n", search(L1, 5)->data, successor(L1, search(L1, 5))->data);
+    printf("Predecessor of %d in list 2: %d\n", search(L2, 9)->data, predecessor(L2, search(L2, 9))->data);
     //printf("Successor of %d in list 2: %d\n", search(L2, 9)->data, successor(L2, search(L2, 9))->data);
 
     printf("Predecessor in L2 of the maximum in L1: %d\n", predecessor(L2, maximum(L1))->data);
@@ -218,7 +221,8 @@ int main() {
 
     printList(L1);
     printList(L2);
-
+    delete(L2, L1->head->next->next);
+    printList(L2);
     // Free up the memory used by the lists when done
     freeList(L1);
     freeList(L2);

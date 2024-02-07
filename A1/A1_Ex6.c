@@ -21,7 +21,7 @@ Node* createNode(int data) {
 }
 
 // Function to initialize a new stack
-List* createStack() {
+List* createQueue() {
     List* queue = (List*)malloc(sizeof(List)); // Allocate memory for the new stack
     queue->head = NULL; // Set the head of the stack to NULL
     queue->tail = NULL; // Set the tail of the stack to NULL
@@ -30,26 +30,26 @@ List* createStack() {
 
 // Function to enqueue an element onto the queue
 void enqueue(List* queue, int data) {
-    Node* newNode = createNode(data);
-    if(queue->tail != NULL) {
-        queue->tail->next = newNode;
+    Node* newNode = createNode(data); // Create a new node with the given data
+    if(queue->tail != NULL) { // If the tail of the queue is not NULL
+        queue->tail->next = newNode; // Set the next of the tail of the queue to the new node
     }
-    queue->tail = newNode;
-    if(queue->head == NULL) {
-        queue->head = newNode;
+    queue->tail = newNode; // Set the tail of the queue to the new node
+    if(queue->head == NULL) { // If the head of the queue is NULL
+        queue->head = newNode; // Set the head of the queue to the new node
     }
 }
 
 // Function to dequeue an element from the queue
 int dequeue(List* queue) {
-    Node* temp = queue->head;
-    int data = temp->data;
-    queue->head = queue->head->next;
-    if(queue->head == NULL) {
-        queue->tail = NULL;
+    Node* temp = queue->head; // Store the head of the queue in a temporary variable
+    int data = temp->data; // Store the data of the head of the queue
+    queue->head = queue->head->next; // Set the head of the queue to the next of the head
+    if(queue->head == NULL) { // If the head of the queue is NULL
+        queue->tail = NULL; // Set the tail of the queue to NULL
     }
-    free(temp);
-    return data;
+    free(temp); // Frees the temporary variable
+    return data; // Return the data of the head of the queue
 }
 
 int main() {

@@ -9,7 +9,6 @@ typedef struct Node {
 
 typedef struct List {
     Node *head;
-    Node *tail;
 } List;
 
 // Function to create a new node
@@ -24,7 +23,6 @@ Node* createNode(int data) {
 List* createStack() {
     List* stack = (List*)malloc(sizeof(List)); // Allocate memory for the new stack
     stack->head = NULL; // Set the head of the stack to NULL
-    stack->tail = NULL; // Set the tail of the stack to NULL
     return stack; // Return the new stack
 }
 
@@ -33,9 +31,6 @@ void push(List* stack, int data) {
     Node* newNode = createNode(data); // Create a new node with the given data
     newNode->next = stack->head; // Set the next of the new node to the head of the stack
     stack->head = newNode; // Set the head of the stack to the new node
-    if(stack->tail == NULL) { // If the tail of the stack is NULL
-        stack->tail = newNode; // Set the tail of the stack to the new node
-    }
 }
 
 // Function to pop an element from the stack
@@ -43,9 +38,6 @@ int pop(List* stack) {
     Node* temp = stack->head; // Store the head of the stack in a temporary variable
     int data = temp->data; // Store the data of the head of the stack
     stack->head = stack->head->next; // Set the head of the stack to the next of the head
-    if(stack->head == NULL) { // If the head of the stack is NULL
-        stack->tail = NULL; // Set the tail of the stack to NULL
-    }
     free(temp); // Frees the temporary variable
     return data; // Return the data of the head of the stack
 }
