@@ -1,6 +1,6 @@
 ------------------------------------------
 G2_team01
-William Gyrulf
+William Gyrulf 031112
 Jakub Haczkiewicz
 
 Disclosure: to perform this exercise, I have utilised external resources and assistance:
@@ -11,7 +11,23 @@ Disclosure: to perform this exercise, I have utilised external resources and ass
 
 This exercise asked to implement a queue using either an array or a linked list.
 Also, implement the operations enqueue and dequeue for it.
+
 We used a simply linked list to do this.
+
+A queue is a FIFO (first in first out) data structure.
+A queue is structure that consists of elements. Every element added to the queue is added at the end (tail).
+When dequeuing an element from the queue, it is always the element added first that gets dequeued.
+
+Functions:
+
+void enqueue(Queue* queue, int data)
+This function adds an element to the top of the queue.
+This new element now becomes the tail of the queue.
+
+int dequeue(Queue* queue)
+This function deletes the first element added to the list.
+The second element ever added to the queue then becomes the head of the queue.
+It then returns the element that was deleted from the queue.
 
 The code is implemented in the following file:
     - A1_Ex6.c
@@ -21,5 +37,4 @@ To compile and execute the code:
     $ gcc -o A1_Ex6 A1_Ex6.c
     $ ./A1_Ex6
 
-(2)
-
+Test cases in exercise 7.

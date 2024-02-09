@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define the Node and List structures
+// Define the Node and Queue structures
 typedef struct Node {
     int data;
     struct Node *next;
 } Node;
 
-typedef struct List {
+typedef struct Queue {
     Node *head;
     Node *tail;
-} List;
+} Queue;
 
 // Function to create a new node
 Node* createNode(int data) {
@@ -21,15 +21,15 @@ Node* createNode(int data) {
 }
 
 // Function to initialize a new stack
-List* createQueue() {
-    List* queue = (List*)malloc(sizeof(List)); // Allocate memory for the new stack
+Queue* createQueue() {
+    Queue* queue = (Queue*)malloc(sizeof(Queue)); // Allocate memory for the new stack
     queue->head = NULL; // Set the head of the stack to NULL
     queue->tail = NULL; // Set the tail of the stack to NULL
     return queue; // Return the new stack
 }
 
 // Function to enqueue an element onto the queue
-void enqueue(List* queue, int data) {
+void enqueue(Queue* queue, int data) {
     Node* newNode = createNode(data); // Create a new node with the given data
     if(queue->tail != NULL) { // If the tail of the queue is not NULL
         queue->tail->next = newNode; // Set the next of the tail of the queue to the new node
@@ -41,7 +41,7 @@ void enqueue(List* queue, int data) {
 }
 
 // Function to dequeue an element from the queue
-int dequeue(List* queue) {
+int dequeue(Queue* queue) {
     Node* temp = queue->head; // Store the head of the queue in a temporary variable
     int data = temp->data; // Store the data of the head of the queue
     queue->head = queue->head->next; // Set the head of the queue to the next of the head
@@ -53,7 +53,7 @@ int dequeue(List* queue) {
 }
 
 int main() {
-    List* queue = createQueue();
+    Queue* queue = createQueue();
 
     int Personnr[] = {2, 0, 0, 3, 1, 1, 1, 2, 1, 2, 3, 4};
 

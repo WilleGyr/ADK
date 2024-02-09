@@ -1,10 +1,10 @@
 ------------------------------------------
 G2_team01
-William Gyrulf
+William Gyrulf 031112
 Jakub Haczkiewicz
 
 Disclosure: to perform this exercise, I have utilised external resources and assistance:
-    - CoPilot
+    - CLRS 4th edition
     - Learn-C.org [https://www.learn-c.org/en/Linked_lists]
 ------------------------------------------
 
@@ -14,6 +14,52 @@ This exercise asked to implement a doubly linked list with the following functio
 insert, predend, delete, search, isEmpty, predecessor, successor, minimum and maximum.
 We started by implementing a structure for doubly linked lists.
 
+Functions:
+
+int isEmpty(List* L)
+Checks if a list is empty. It then returns 1 if it is empty and 0 if not.
+
+Node* search(List* L, int k)
+This function finds and returns the first node in the given linked list with the key value that is equal to the given value k.
+
+int insert(List* L, Node* x, Node* y)
+This function takes in a linked list and two nodes, a new node x and node y which already exists in the given linked list.
+It then inserts the new node x right after node y in the linked list. Returns 1 if successful and 0 if not.
+
+int prepend(List* L, Node* x)
+This function inserts a new node x in the beginning of the list. This makes the new node x the new head of the list.
+Returns 1 if successful  and 0 if not
+
+Node* delete(List* L, Node* x)
+This function finds the given node x and deletes it.
+It does this by changing the "next" pointer of the node previous to x to the node after x. It then returns the deleted node x.
+
+Node* maximum(List* L)
+This function finds maximum key value in the given list L.
+The function goes through every node in the list and returns the greatest value
+
+Node* minimum(List* L)
+This function finds minimum key value in the given list L.
+The function goes through every node in the list and returns the smallest value
+
+Node* successor(List* L, Node* x)
+This function goes through the given list L and finds the node with smallest key value greater than the key of the given node x.
+
+Node* predecessor(List* L, Node* x)
+This function goes through the given list L and finds the node with greatest key value smaller than the key of the given node x.
+
+Node* createNode(int data)
+This function is used to create a node which can then be inserted into a list.
+This function assigns the given data as the nodes key value.
+It also assigns the nodes next and prev pointers to NULL. This is later changed when the node is inserted into a list.
+
+void printList(List* L)
+This function goes through the whole list and prints the key value of each node in order.
+
+void freeList(List* L)
+This function is used to free up the memory used by the list and the lists nodes.
+The function goes through the list and frees up the memory used by each node and then frees the list itself
+
 The code is implemented in the following file:
     - A1_Ex1.c
 
@@ -22,5 +68,4 @@ To compile and execute the code:
     $ gcc -o A1_Ex1 A1_Ex1.c
     $ ./A1_Ex1
 
-(2)
-
+Test cases in exercise 2.

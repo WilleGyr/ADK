@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Define the Node and List structures
+// Define the Node and Stack structures
 typedef struct Node {
     int data;
     struct Node *next;
 } Node;
 
-typedef struct List {
+typedef struct Stack {
     Node *head;
-} List;
+} Stack;
 
 // Function to create a new node
 Node* createNode(int data) {
@@ -20,21 +20,21 @@ Node* createNode(int data) {
 }
 
 // Function to initialize a new stack
-List* createStack() {
-    List* stack = (List*)malloc(sizeof(List)); // Allocate memory for the new stack
+Stack* createStack() {
+    Stack* stack = (Stack*)malloc(sizeof(Stack)); // Allocate memory for the new stack
     stack->head = NULL; // Set the head of the stack to NULL
     return stack; // Return the new stack
 }
 
 // Function to push an element onto the stack
-void push(List* stack, int data) {
+void push(Stack* stack, int data) {
     Node* newNode = createNode(data); // Create a new node with the given data
     newNode->next = stack->head; // Set the next of the new node to the head of the stack
     stack->head = newNode; // Set the head of the stack to the new node
 }
 
 // Function to pop an element from the stack
-int pop(List* stack) {
+int pop(Stack* stack) {
     Node* temp = stack->head; // Store the head of the stack in a temporary variable
     int data = temp->data; // Store the data of the head of the stack
     stack->head = stack->head->next; // Set the head of the stack to the next of the head
@@ -43,7 +43,7 @@ int pop(List* stack) {
 }
 
 int main() {
-    List* stack = createStack(); // Create a new stack
+    Stack* stack = createStack(); // Create a new stack
 
     int Personnr[] = {2, 0, 0, 3, 1, 1, 1, 2, 1, 2, 3, 4};
 

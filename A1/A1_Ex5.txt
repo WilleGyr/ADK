@@ -1,6 +1,6 @@
 ------------------------------------------
 G2_team01
-William Gyrulf
+William Gyrulf 031112
 Jakub Haczkiewicz
 
 Disclosure: to perform this exercise, I have utilised external resources and assistance:
@@ -11,7 +11,23 @@ Disclosure: to perform this exercise, I have utilised external resources and ass
 
 This exercise asked to implement a stack using either an array or linked list.
 Also, implement the operations push and pop for it.
+
 We used a simply linked list to do this.
+
+A stack is a LIFO (last in first out) data structure.
+A stack is structure that consists of elements. Every element added to the stack is added at the top (head).
+When popping an element from the stack, it is always the element added last that gets popped.
+
+Functions:
+
+void push(Stack* stack, int data)
+This function pushes (adds) an element to the top of the stack.
+This new element becomes the new head of the list.
+
+int pop(Stack* stack)
+This function pops (deletes) the last element added to the stack.
+The second to last element added to the list then becomes the new head of the list.
+It then returns the popped element.
 
 The code is implemented in the following file:
     - A1_Ex5.c
@@ -21,5 +37,4 @@ To compile and execute the code:
     $ gcc -o A1_Ex5 A1_Ex5.c
     $ ./A1_Ex5
 
-(2)
-
+Test cases in exercise 7.
