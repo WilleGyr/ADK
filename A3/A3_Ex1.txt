@@ -1,0 +1,138 @@
+------------------------------------------
+G2_team01
+William Gyrulf (ID: 031112), Jakub Haczkiewicz (ID: 040508)
+
+Disclosure: to perform this exercise, I have utilised external resources and assistance:
+    - CLRS 4th edition
+    - Lectures
+------------------------------------------
+
+(1)
+
+This exercise asked to create an implementation of a binary search tree.
+And include the following dynamic set operations:
+Search, Minimum, Maximum, Predecessor, Insert, Delete and inorderTreeWalk.
+
+Node* search(Node* x, int k)
+Brief:
+    This function finds the node with the given key value k, in the tree with the given root x.
+Parameters:
+    x: the root of the tree where the search should be done.
+    k: The key value that we want to find.
+Returns:
+    Returns the node with the given key value k.
+
+Node* minimum(Node* x)
+Brief:
+    Finds the node with the smallest key value in the tree with the given node x as its root.
+Parameter:
+    x: The root of the tree that we want the minimum of.
+Returns:
+    The node with the smallest key value in the tree with the given node x as its root.
+
+Node* maximum(Node* x)
+Brief:
+    Finds the node with the greatest key value in the tree with the given node x as its root.
+Parameter:
+    x: The root of the tree that we want the maximum of.
+Returns:
+    The node with the greatest key value in the tree with the given node x as its root.
+
+Node* predecessor(Node* x)
+Brief:
+    Finds the node with the largest key value that is less than the key of the given node x.
+Parameter:
+    x: The node that we want the predecessor of.
+Returns:
+    The node with the largest key value that is less than the key of the given node x.
+
+void insert(Tree* T, Node* z)
+Brief:
+    Inserts the given node z into the given tree T.
+Parameters:
+    T: The tree where the node should be inserted.
+    z: The node that should be inserted.
+Returns:
+    None.
+
+void deleteNode(Tree* T, Node* z)
+Brief:
+    Deletes the given node z from the given tree T.
+Parameters:
+    T: The tree where the node should be deleted.
+    z: The node that should be deleted.
+Returns:
+    None.
+
+void inorderTreeWalk(Node* x)
+Brief:
+    Performs an in-order traversal of the tree with the given node x as its root and prints each node.
+Parameter:
+    x: The root of the tree that should be traversed.
+Returns:
+    None.
+
+void transplant(Tree* T, Node* u, Node* v)
+Brief:
+    Replaces the subtree rooted at node u with the subtree rooted at node v in the given tree T.
+Parameters:
+    T: The tree where the transplant should be done.
+    u: The node that should be replaced.
+    v: The node that should replace u.
+Returns:
+    None.
+
+The code is implemented in the following file:
+    - A3_Ex1.c
+
+Code Execution:
+To compile and execute the code:
+    $ gcc -o A3_Ex1 A3_Ex1.c
+    $ ./A3_Ex1
+
+(2)
+
+This exercise asked to construct a BST called myBST from the digits of my personnummer.
+And then to answer/complete the following questions/exercises:
+
+Personnummer used in exercise: 200311129999
+
+2.1 Print your personnummer in sorted order using myBST
+    Input: inorderTreeWalk( myBST->root )
+    Outout: 0 0 1 1 1 2 2 3 9 9 9 9
+
+2.2 What is the root's key in myBST?
+The root's key is 2.
+    Input: myBST->root->key
+    Output: 2
+
+2.3 Insert each digit from 0 to 9 if they don't already exist in myBST.
+It inserted 4, 5, 6, 7 and 8 into myBST.
+    Input: inorderTreeWalk( myBST->root )
+    Output: 0 0 1 1 1 2 2 3 4 5 6 7 8 9 9 9 9
+
+2.4 Did the root change in myBST?
+No, the root does not change when inserting to or deleting from a BST.
+    Input: myBST->root->key
+    Output: 2
+
+2.5 What is the predecessor of the root in myBST?
+The predecessor of the root is 1.
+    Input: predecessor( myBST->root )->key
+    Output: 1
+
+2.6 What is the predecessor of the maximum key in myBST?
+The predecessor of the maximum (9) is 9.
+    Input: predecessor( maximum( myBST->root ) )->key
+    Output: 9
+
+2.7 What is the predecessor of the minimum in myBST?
+The minimum does not have a predecessor.
+    Input: predecessor( minimum( myBST->root ) )->key
+    Output: NULL
+
+2.8 What would be the new root's key after deleting the current root of myBST?
+The new root's key would be 1
+    Input: deleteNode( myBST->root )
+    Input 2: myBST->root->key
+    Output: 1
