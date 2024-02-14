@@ -112,4 +112,20 @@ void transplant(Tree* T, Node* u, Node* v);
  */
 void deleteNode(Tree* T, Node* z);
 
+/**
+ * Calculates the height of a tree rooted at the given node.
+ *
+ * @param x The root node of the tree.
+ * @return The height of the tree.
+ */
+int treeHeight(Node* x);
+
+/**
+ * Calculates the balance factor of a BST with the given node x as its root.
+ *
+ * @param x The node for which to calculate the balance factor.
+ * @return The balance factor of the node.
+ */
+int treeBalanceFactor(Node* x);
+
 #endif

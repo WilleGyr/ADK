@@ -84,10 +84,14 @@ Returns:
 
 The code is implemented in the following file:
     - A3_Ex1.c
+    - tree.c
+    - tree.h
 
 Code Execution:
 To compile and execute the code:
-    $ gcc -o A3_Ex1 A3_Ex1.c
+    $ gcc -c A3_Ex2.c
+    $ gcc -c tree.c
+    $ gcc -o A3_Ex1 A3_Ex1.o tree.o
     $ ./A3_Ex1
 
 (2)

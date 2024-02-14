@@ -25,7 +25,7 @@ int main() {
     int digits[] = {0, 1, 2, 3, 4, 5, 6, 7, 8 ,9};
 
     for (int i = 0; i < 10; i++) {
-        Node* searchNode = search(myBST, digits[i]);
+        Node* searchNode = search(myBST->root, digits[i]);
         if (searchNode == NULL) {
             Node* newNode = createNode(digits[i]);
             insert(myBST, newNode);

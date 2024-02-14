@@ -1,0 +1,44 @@
+------------------------------------------
+G2_team01
+William Gyrulf (ID: 031112), Jakub Haczkiewicz (ID: 040508)
+
+Disclosure: to perform this exercise, I have utilised external resources and assistance:
+    - CLRS 4th edition
+    - Lectures
+------------------------------------------
+
+(1)
+
+This exercise asked to test the previous exercises.
+
+1.
+Load two problem files into arrays. One with the size of 1000 and one with the size of 100000.
+Used the load_file function.
+
+2.
+Constructed a BST for each array.
+
+3.
+Printed the BSTs in sorted order using the inorderTreeWalk function.
+Then compared them with the solution files to make sure it was correct.
+
+4.
+Calculated the balance factor for each BST using the algorithms from exercise 2.
+The BST of size 1000 had a balance factor of 5.
+The BST of size 100000 had a balance factor of 15.
+The BST of size 1000 was somehow-balanced while the BST of size 100000 was imbalanced.
+
+The code is implemented in the following file:
+    - A3_Ex3.c
+    - load_file.c
+    - load_file.h
+    - tree.c
+    - tree.h
+
+Code Execution:
+To compile and execute the code:
+    $ gcc -c A3_Ex3.c
+    $ gcc -c load_file.c
+    $ gcc -c tree.c
+    $ gcc -o A3_Ex3 A3_Ex2.o tree.o load_file.o
+    $ ./A3_Ex3
