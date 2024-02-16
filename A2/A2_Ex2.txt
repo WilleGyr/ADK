@@ -1,0 +1,26 @@
+------------------------------------------
+G2_team01
+Jakub Haczkiewicz (ID: 040508), William Gyrulf (ID: 031112)
+
+Disclosure: to perform this exercise, I have utilised external resources and assistance:
+    - Lectures
+------------------------------------------
+
+1. If the input array is sorted in descending order, then Merge Sort is the best algorithm to use.
+- An array sorted in descending order is the worst case scenario (N^2) for Insertion sort as it will have to move each element the longest possible path
+- An array sorted in descending order does not have a particular effect (N*log(N)) on Merge Sort
+- An array sorted in descending order is the worst case scenario (N^2) for Quick Sort as it will always pick the last number which is always an "edge" number
+
+2. If the input array is sorted in ascending order, then Insertion Sort is the best algorithm to use
+(Assuming the algorithms do not check if the array is already sorted)
+- An array sorted in ascending order is the best case scenario (N) for Insertion sort
+- An array sorted in ascending order does not have a particular effect (N*log(N)) on Merge Sort
+- An array sorted in descending order is the worst case scenario (N^2) for Quick Sort as it will always pick the last number which is always an "edge" number
+
+3. If all elements in the array are the same, then Insertion Sort is the best algorithm to use
+- All elements being the same is the best case scenario (N) for Insertion sort
+- All elements being the same does not have a particular effect (N*log(N)) on Merge Sort
+- All elements being the same does not have a particular effect (N*log(N)) on Quick Sort (no swaps)
+
+4. If there are both positive and negative numbers in the array, then Quick Sort is the best algorithm to use
+Assuming the array is randomly sorted then the presence of negative numbers does not affect the algortithms

@@ -1,0 +1,28 @@
+------------------------------------------
+G2_team01
+Jakub Haczkiewicz (ID: 040508), William Gyrulf (ID: 031112)
+
+Disclosure: to perform this exercise, I have utilised external resources and assistance:
+    - Github Copilot
+    - Lectures
+------------------------------------------
+
+This exercise required testing the sorting algorithms written in Exercise 1 in the following cases:
+* Using the array A = [3, 1, 5, 10, 8, 7, 5, 2, 9, 6, 1, 2]
+* Using my personal number (last 4 number switched) = [2, 0, 0, 4, 0, 5, 0, 8, 1, 2, 3, 4]
+
+While it is a less clean solution code-wise, 6 arrays were created (3 of each array or 2 for each algorithm) to remove the risk of affecting the arrays between the different sorting algorithms
+
+The main function creates arrays A1-6, calls the sorting algorithms using the imported A2_Ex1.h file and prints the sorted arrays 
+
+This code acts as test cases for A2_Ex1.c
+
+The code is implemented in the following file:
+    - A2_Ex3.c
+
+Code Execution:
+To compile and execute the code:
+    $ gcc -c A2_Ex1.c
+    $ gcc -c A2_Ex3.c
+    $ gcc A2_Ex1.o A2_Ex3.o -o A2_Ex3
+    $ ./A2_Ex3

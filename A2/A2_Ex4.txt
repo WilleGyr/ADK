@@ -1,0 +1,43 @@
+------------------------------------------
+G2_team01
+Jakub Haczkiewicz (ID: 040508), William Gyrulf (ID: 031112)
+
+Disclosure: to perform this exercise, I have utilised external resources and assistance:
+    - Github Copilot
+    - Lectures
+------------------------------------------
+
+1. load_file.h was included and used to load the following files into arrays once each for every sorting algorithm as well as loading the solution to each problem (12 total)
+- "test-10-1-problem"
+- "test-1000-1-problem"
+- "test-100000-1-problem"
+
+2. After calling the functions of the sorting algorithms which came from the included A2_Ex1.h file, I printed the result from Insertion Sort using "test-10-1-problem"
+
+3. To compare, I also printed the already sorted "test-10-1-solution". As all parts of this assignment were done in one go, instead of returning 0 it prints "All arrays are correctly sorted"
+
+4. These are the times each sorting algorithm took for arrays of length 10, 1000 and 100000.
+I created the program in a way that times all outcomes at once, so it relies on a timer created using the clock() function from the included time.h file
+Due to an error where the time is shown as "0.000000 s" i have forced the program to wait one second after starting the timer and then removed one second from the result each time a sorting algorithm is ran
+Because of that change the results aquired might not be fully indicative of the real time taken by each algorithm.
+
+Unexpectedly, Insertion Sort outperforms Merge Sort and Quick Sort while sorting arrays of size 10 and 1000 but exponentially slows down when reaching 100000 which is closer to what is the expected result.
+
+ n          | InsertionSort          | MergeSort          | QuickSort          |
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 10         | 0.001000 s             | 0.002000 s         | 0.004000 s         |
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 1,000      | 0.008000 s             | 0.015000 s         | 0.011000 s         |
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ 100,000    | 7.124000 s             | 0.042000 s         | 0.039000 s         |
+
+The code is implemented in the following file:
+    - A2_Ex4.c
+
+Code Execution:
+To compile and execute the code:
+    $ gcc -c A2_Ex1.c
+    $ gcc -c A2_Ex4.c
+    $ gcc -c load_file.c
+    $ gcc A2_Ex1.o A2_Ex4.o load_file.o -o A2_Ex4
+    $ ./A2_Ex4

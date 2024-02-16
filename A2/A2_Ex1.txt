@@ -1,0 +1,45 @@
+------------------------------------------
+G2_team01
+Jakub Haczkiewicz (ID: 040508), William Gyrulf (ID: 031112)
+
+Disclosure: to perform this exercise, I have utilised external resources and assistance:
+    - Github Copilot
+    - Lectures
+------------------------------------------
+
+This exercise required an implementation of the following sorting algorithms according to the pseudocode used in the lectures:
+* Insertion Sort 
+* Merge Sort
+* Quick sort 
+
+Functions:
+
+void insertion_sort(A[], int n) 
+n = length of array A
+Goes through array A and sorts through comparison according to the pseudocode used during the lectures
+
+void merge(int A[], int p, int q, int r)
+p, q, r = index of first, middle and last element respectively in the array A
+Merges two sorted subarrays according to the pseudocode used during the lectures
+
+void merge_sort(int A[], int p, int r)
+p, r = index of first and last element respectively in the array A
+Recursively calls itself to sort array A according to the pseudocode used during the lectures
+
+int partition(int A[], int p, int r)
+p, r = index of first and last element respectively in the array A
+Sorts an array into numbers smaller and larger than the pivot element according to the pseudocode used during the lectures
+
+void quick_sort(int A[], int p, int r)
+p, r = index of first and last element respectively in the array A
+Recursively calls itself to sort array A according to the pseudocode used during the lectures
+
+The code is implemented in the following file:
+    - A2_Ex1.c
+
+Code Execution:
+To compile and execute the code:
+    $ gcc -o A2_Ex1 A2_Ex1.c
+    $ ./A2_Ex1
+
+Test cases in exercise 3.
