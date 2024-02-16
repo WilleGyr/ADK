@@ -31,8 +31,12 @@ Unexpectedly, Insertion Sort outperforms Merge Sort and Quick Sort while sorting
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  100,000    | 7.124000 s             | 0.042000 s         | 0.039000 s         |
 
-The code is implemented in the following file:
+The code is implemented in the following files:
     - A2_Ex4.c
+    - A2_Ex1.c
+    - A2_Ex1.h
+    - load_file.c
+    - load_file.h
 
 Code Execution:
 To compile and execute the code:

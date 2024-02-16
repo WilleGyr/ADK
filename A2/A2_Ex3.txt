@@ -17,8 +17,10 @@ The main function creates arrays A1-6, calls the sorting algorithms using the im
 
 This code acts as test cases for A2_Ex1.c
 
-The code is implemented in the following file:
+The code is implemented in the following files:
     - A2_Ex3.c
+    - A2_Ex1.c
+    - A2_Ex1.h
 
 Code Execution:
 To compile and execute the code:
