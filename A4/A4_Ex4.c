@@ -3,30 +3,47 @@
 #include <string.h>
 #include "graph.h"
 
+int is_no_edge_vertex(int vertex, int* no_edge_vertices, int no_edge_vertices_count) {
+    for (int i = 0; i < no_edge_vertices_count; i++) {
+        if (vertex == no_edge_vertices[i]) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 int main(){
 
     // Create graph
     Graph* G2 = createGraph(100);
 
     // The graph is a 10x10 grid. I want each vertice to have an edge to the vertice above, below, to the left and to the right.
-    for (int i = 1; i <= 100; i++) {
-        if (i % 10 != 0) {
-            addDirectedEdge(G2, i, i + 1);
-        }
-        if (i % 10 != 1) {
-            addDirectedEdge(G2, i, i - 1);
-        }
-        if (i <= 90) {
-            addDirectedEdge(G2, i, i + 10);
-        }
-        if (i >= 11) {
-            addDirectedEdge(G2, i, i - 10);
-        }
+    // The following vertices should not have any edges at all: 18, 28, 38, 41, 42, 43, 44, 45, 46, 47, 48, 54, 64, 74 and 84.
+    
+    int no_edge_vertices[] = {18, 28, 38, 41, 42, 43, 44, 45, 46, 47, 48, 54, 64, 74, 84};
+    int no_edge_vertices_count = sizeof(no_edge_vertices) / sizeof(no_edge_vertices[0]);
+
+    for (int i = 0; i < 100; i++) {
+        // Skip vertices that should not have any edges
+        if (is_no_edge_vertex(i, no_edge_vertices, no_edge_vertices_count)) continue;
+
+        // Add edges to the vertices above, below, to the left and to the right
+        if (i >= 10 && !is_no_edge_vertex(i - 10, no_edge_vertices, no_edge_vertices_count)) 
+            addUndirectedEdge(G2, i, i - 10); // Above
+        if (i < 90 && !is_no_edge_vertex(i + 10, no_edge_vertices, no_edge_vertices_count)) 
+            addUndirectedEdge(G2, i, i + 10); // Below
+        if (i % 10 != 0 && !is_no_edge_vertex(i - 1, no_edge_vertices, no_edge_vertices_count)) 
+            addUndirectedEdge(G2, i, i - 1); // Left
+        if (i % 10 != 9 && !is_no_edge_vertex(i + 1, no_edge_vertices, no_edge_vertices_count)) 
+            addUndirectedEdge(G2, i, i + 1); // Right
     }
 
     BFS(G2, 16);
-    // Print the distance variable of vertex 6
-    printf("Distance from 16 to 6: %d\n", G2->vertices[6].distance);
+    // Print the distance variable of vertex 61
+    printf("Distance from 16 to 61: %d\n", G2->vertices[61].distance);
+
+    // Print the path from 16 to 61
+    printPath(G2, 16, 61);
 
     return 0;
 }

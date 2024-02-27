@@ -121,6 +121,7 @@ void BFS(Graph* graph, int start) {
     // Initialize the start vertex
     graph->vertices[start].distance = 0;
     graph->vertices[start].visited = 1;
+    graph->vertices[start].predecessor = -1;  // Start vertex has no predecessor
 
     // Enqueue the start vertex
     enqueue(queue, start);
@@ -134,6 +135,7 @@ void BFS(Graph* graph, int start) {
             if (graph->adjMatrix[current][i] && !graph->vertices[i].visited) {
                 graph->vertices[i].visited = 1;
                 graph->vertices[i].distance = graph->vertices[current].distance + 1;
+                graph->vertices[i].predecessor = current;  // Set the predecessor
                 enqueue(queue, i);
             }
         }
@@ -141,6 +143,17 @@ void BFS(Graph* graph, int start) {
 
     // Free the queue
     free(queue);
+}
+
+void printPath(Graph* graph, int start, int end) {
+    if (start == end) {
+        printf("%d ", start);
+    } else if (graph->vertices[end].predecessor == -1) {
+        printf("No path from %d to %d exists", start, end);
+    } else {
+        printPath(graph, start, graph->vertices[end].predecessor);
+        printf("%d ", end);
+    }
 }
 
 // Function to perform DFS and set finish times

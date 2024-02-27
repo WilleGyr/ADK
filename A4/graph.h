@@ -7,6 +7,7 @@ typedef struct Vertex {
     int id;
     int distance;
     int visited;
+    int predecessor;
 } Vertex;
 
 // Define the graph structure
@@ -15,6 +16,8 @@ typedef struct Graph {
     Vertex* vertices;
     int** adjMatrix;
 } Graph;
+
+void printPath(Graph* graph, int start, int end);
 
 /**
  * @brief Creates a new graph with the specified number of vertices.
