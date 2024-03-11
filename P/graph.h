@@ -16,6 +16,7 @@ typedef struct Graph {
     int numVertices;
     Vertex* vertices;
     int** adjMatrix;
+    int size;
 } Graph;
 
 void printPath(Graph* graph, int start, int end);
