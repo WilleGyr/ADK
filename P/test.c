@@ -5,6 +5,18 @@
 #include <limits.h>
 
 #define SIZE 150
+#define DIRECTIONS 4
+
+typedef struct {
+    int vertex;
+    int cost;
+    int direction;
+} PQNode;
+
+typedef struct {
+    PQNode nodes[SIZE];
+    int size;
+} PriorityQueue;
 
 int is_no_edge_vertex(int vertex, int* no_edge_vertices, int no_edge_vertices_count) {
     for (int i = 0; i < no_edge_vertices_count; i++) {
@@ -70,17 +82,6 @@ Graph* create_graph_from_file(char* filename) {
     return G;
 }
 
-typedef struct {
-    int vertex;
-    int cost;
-    int direction;
-} PQNode;
-
-typedef struct {
-    PQNode nodes[SIZE];
-    int size;
-} PriorityQueue;
-
 // Enqueue function
 void PQenqueue(PriorityQueue* queue, PQNode node) {
     if (queue->size >= SIZE) {
@@ -121,8 +122,6 @@ int getDirection(int current, int next) {
     }
 }
 
-#define DIRECTIONS 4
-
 void PprintPath(int prev[][DIRECTIONS], int direction[][DIRECTIONS], int vertex, int dir) {
     if (prev[vertex][dir] == -1) {
         printf("%d ", vertex);
@@ -136,14 +135,16 @@ void dijkstra(Graph* G, int source, int destination) {
     int dist[SIZE][DIRECTIONS];
     int prev[SIZE][DIRECTIONS];
     int direction[SIZE][DIRECTIONS];
+    int turns[SIZE][DIRECTIONS];
     PriorityQueue queue = {0};
 
-    // Initialize distances to infinity and previous vertices to -1
+    // Initialize distances to infinity, previous vertices to -1, and turns to 0
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < DIRECTIONS; j++) {
             dist[i][j] = INT_MAX;
             prev[i][j] = -1;
             direction[i][j] = -1;
+            turns[i][j] = 0;
         }
     }
 
@@ -153,9 +154,7 @@ void dijkstra(Graph* G, int source, int destination) {
         PQenqueue(&queue, (PQNode){source, G->vertices[source].cost, i});
     }
 
-
     while (!PQisEmpty(&queue)) {
-
         // Dequeue the vertex with the smallest distance
         PQNode node = PQdequeue(&queue);
 
@@ -166,11 +165,16 @@ void dijkstra(Graph* G, int source, int destination) {
                 int dir = getDirection(node.vertex, i);
                 int turnCost = abs(node.direction - dir) % 2 == 0 ? 0 : G->vertices[node.vertex].cost;
                 int cost = dist[node.vertex][node.direction] + turnCost + G->vertices[i].cost;
+                int newTurns = turns[node.vertex][node.direction] + (node.direction != dir ? 1 : 0);
 
                 // If the calculated cost is less than the current distance to the neighbor
-                if (cost < dist[i][dir]) {
+                // or the cost is equal but the number of turns is less
+                if (cost < dist[i][dir] || (cost == dist[i][dir] && newTurns < turns[i][dir])) {
                     // Update the distance to the neighbor
                     dist[i][dir] = cost;
+
+                    // Update the number of turns
+                    turns[i][dir] = newTurns;
 
                     // Update the previous vertex and direction
                     prev[i][dir] = node.vertex;
@@ -183,10 +187,11 @@ void dijkstra(Graph* G, int source, int destination) {
         }
     }
 
-    // Find the direction with the smallest distance at the destination vertex
+    // Find the direction with the smallest distance and the fewest turns at the destination vertex
     int minDirection = 0;
     for (int i = 1; i < DIRECTIONS; i++) {
-        if (dist[destination][i] < dist[destination][minDirection]) {
+        if (dist[destination][i] < dist[destination][minDirection] || 
+            (dist[destination][i] == dist[destination][minDirection] && turns[destination][i] < turns[destination][minDirection])) {
             minDirection = i;
         }
     }
@@ -203,7 +208,6 @@ void dijkstra(Graph* G, int source, int destination) {
 int main( int argc, char *argv[]){
 
     char *filename = argv[1];
-
     int start = atoi(argv[2]);
     int end = atoi(argv[3]);
 
@@ -217,7 +221,7 @@ int main( int argc, char *argv[]){
         printf("\n");
     }
 
-    // Print the path with the lowest cost from vertex 0 to 14
+    // Print the path with the lowest cost from vertex start to vertex end
     dijkstra(G, start, end);
 
 
