@@ -26,4 +26,6 @@ int getDirection(int current, int next);
 
 void PprintPath(int prev[][DIRECTIONS], int direction[][DIRECTIONS], int vertex, int dir, int size);
 
+void printGraphWithPath(Graph* G, int prev[][DIRECTIONS], int direction[][DIRECTIONS], int destination, int minDirection);
+
 void dijkstra(Graph* G, int sourcex, int sourcey, int destinationx, int destinationy);

@@ -16,7 +16,9 @@ int is_no_edge_vertex(int vertex, int* no_edge_vertices, int no_edge_vertices_co
 }
 
 Graph* create_graph_from_file(char* filename) {
-    FILE* file = fopen(filename, "r");
+    char path[100] = "P_material_VT24/";
+    strcat(path, filename);
+    FILE* file = fopen(path, "r");
     if (file == NULL) {
         printf("Could not open file %s\n", filename);
         return NULL;
@@ -113,12 +115,44 @@ int getDirection(int current, int next) {
 void PprintPath(int prev[][DIRECTIONS], int direction[][DIRECTIONS], int vertex, int dir, int size) {
     if (prev[vertex][dir] != -1) {
         PprintPath(prev, direction, prev[vertex][dir], direction[vertex][dir], size);
-        printf("-> ");
+        printf(" -> ");
     }
-    printf("(%d, %d)", vertex / size, vertex % size);
+    printf("\n(%d, %d)", vertex / size, vertex % size);
+}
+
+void printGraphWithPath(Graph* G, int prev[][DIRECTIONS], int direction[][DIRECTIONS], int destination, int minDirection) {
+    int size = G->size;
+    int isOnPath[size * size];
+    memset(isOnPath, 0, sizeof(isOnPath));
+
+    int current = destination;
+    int dir = minDirection;
+    while (current != -1) {
+        isOnPath[current] = 1;
+        int next = prev[current][dir];
+        dir = direction[current][dir];
+        current = next;
+    }
+
+    for (int i = 0; i < size * size; i++) {
+        if (i % size == 0) {
+            printf("\n");
+        }
+        if (isOnPath[i]) {
+            printf("\x1b[32m%d \x1b[0m", G->vertices[i].cost);
+        } else {
+            if (G->vertices[i].cost == 0) {
+                printf("\x1b[31m%d \x1b[0m", G->vertices[i].cost);
+            } else {
+                printf("%d ", G->vertices[i].cost);
+            }
+        }
+    }
+    printf("\n");
 }
 
 void dijkstra(Graph* G, int sourcex, int sourcey, int destinationx, int destinationy) {
+    // Convert the source and destination coordinates to vertices
     int source = sourcex * G->size + sourcey;
     int destination = destinationx * G->size + destinationy;
 
@@ -187,11 +221,13 @@ void dijkstra(Graph* G, int sourcex, int sourcey, int destinationx, int destinat
     }
 
     // The distance to the destination vertex is the cost of the cheapest path
-    printf("The cost of the cheapest path is %d\n", dist[destination][minDirection]);
+    printf("\nThe energy consumption of the most efficient path(s) from (%d, %d) to (%d, %d) is \x1b[32m%d \x1b[0m\n", sourcex, sourcey, destinationx, destinationy, dist[destination][minDirection]);
 
     // Print the cheapest path
-    printf("The cheapest path is: ");
+    printf("\nThe most efficient path with the fewest turns is: ");
     int size = sqrt(getNumVertices(G));
     PprintPath(prev, direction, destination, minDirection, size);
     printf("\n");
+
+    printGraphWithPath(G, prev, direction, destination, minDirection);
 }
