@@ -1,43 +1,37 @@
-// Define the Node and Queue structures
-typedef struct Node {
-    int data;
-    struct Node *next;
+#define SIZE 150
+
+typedef struct {
+    int vertex;
+    int cost;
+    int direction;
 } Node;
 
-typedef struct Queue {
-    Node *head;
-    Node *tail;
-} Queue;
+typedef struct {
+    Node nodes[SIZE];
+    int size;
+} PriorityQueue;
 
 /**
- * @struct Node
- * @brief Represents a node in a graph.
- * 
- * A node contains data and pointers to its adjacent nodes.
- */
-Node* createNode(int data);
-
-/**
- * @brief Creates a new Queue object.
- * 
- * @return Pointer to the newly created Queue object.
- */
-Queue* createQueue();
-
-/**
- * @brief Enqueues an element into the queue.
- * 
- * @param queue The queue to enqueue the element into.
- * @param data The data to be enqueued.
- */
-void enqueue(Queue* queue, int data);
-
-/**
- * @brief Removes and returns the element at the front of the queue.
+ * @brief Adds a node to the priority queue.
  *
- * This function dequeues an element from the specified queue and returns its value.
+ * This function adds a node to the priority queue. The node is inserted
+ * according to its priority value, with higher priority nodes being placed
+ * closer to the front of the queue.
  *
- * @param queue The queue from which to dequeue an element.
- * @return The value of the dequeued element.
+ * @param queue A pointer to the priority queue.
+ * @param node The node to be added to the queue.
  */
-int dequeue(Queue* queue);
+void enqueue(PriorityQueue* queue, Node node);
+
+/**
+ * Represents a node in a priority queue.
+ */
+Node dequeue(PriorityQueue* queue);
+
+/**
+ * Checks if the priority queue is empty.
+ *
+ * @param queue The priority queue to check.
+ * @return True if the priority queue is empty, false otherwise.
+ */
+int isEmpty(PriorityQueue* queue);

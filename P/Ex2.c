@@ -7,11 +7,13 @@
 #include "dijkstra.h"
 
 int main( int argc, char *argv[]){
+    // Check if the number of arguments is correct
     if (argc != 6) {
         printf("Incorrect argument am\nUsage: %s <filename> <start_x> <start_y> <end_x> <end_y>\n", argv[0]);
         return 1;
     }
 
+    // Check if the last 4 arguments are integers
     for (int i = 2; i < 6; i++) {
         for (int j = 0; j < strlen(argv[i]); j++) {
             if (argv[i][j] < '0' || argv[i][j] > '9') {

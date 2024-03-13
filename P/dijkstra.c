@@ -6,7 +6,9 @@
 #include "graph.h"
 #include "dijkstra.h"
 
+// Function to check if a vertex is in the list of no-edge vertices
 int is_no_edge_vertex(int vertex, int* no_edge_vertices, int no_edge_vertices_count) {
+    // Goes through the array of no-edge vertices and checks if the given vertex is in the array
     for (int i = 0; i < no_edge_vertices_count; i++) {
         if (vertex == no_edge_vertices[i]) {
             return 1;
@@ -104,33 +106,6 @@ Graph* create_graph_from_file(char* filename) {
     return G;
 }
 
-// Enqueue function
-void PQenqueue(PriorityQueue* queue, PQNode node) {
-    if (queue->size >= SIZE) {
-        printf("Queue is full\n");
-        return;
-    }
-    queue->nodes[queue->size++] = node;
-}
-
-// Dequeue function
-PQNode PQdequeue(PriorityQueue* queue) {
-    int minIndex = 0;
-    for (int i = 1; i < queue->size; i++) {
-        if (queue->nodes[i].cost < queue->nodes[minIndex].cost) {
-            minIndex = i;
-        }
-    }
-    PQNode minNode = queue->nodes[minIndex];
-    queue->nodes[minIndex] = queue->nodes[--queue->size];
-    return minNode;
-}
-
-// isEmpty function
-int PQisEmpty(PriorityQueue* queue) {
-    return queue->size == 0;
-}
-
 // getDirection function
 int getDirection(int current, int next) {
     if (next == current - 1) {
@@ -145,11 +120,11 @@ int getDirection(int current, int next) {
 }
 
 // Function to print the shortest path from the source to a given vertex
-void PprintPath(int prev[][DIRECTIONS], int direction[][DIRECTIONS], int vertex, int dir, int size) {
+void PrintPath(int prev[][DIRECTIONS], int direction[][DIRECTIONS], int vertex, int dir, int size) {
     // If the previous vertex in the path from the source to this vertex exists
     if (prev[vertex][dir] != -1) {
-        // Recursively call PprintPath for the previous vertex
-        PprintPath(prev, direction, prev[vertex][dir], direction[vertex][dir], size);
+        // Recursively call PrintPath for the previous vertex
+        PrintPath(prev, direction, prev[vertex][dir], direction[vertex][dir], size);
         // Print an arrow indicating the direction from the previous vertex to this vertex
         printf(" -> ");
     }
@@ -226,17 +201,17 @@ void dijkstra(Graph* G, int sourcex, int sourcey, int destinationx, int destinat
     // The distance to the source vertex is the cost of the source vertex for all directions
     for (int i = 0; i < DIRECTIONS; i++) {
         dist[source][i] = G->vertices[source].cost;
-        PQNode node;
+        Node node;
         node.vertex = source;
         node.cost = G->vertices[source].cost;
         node.direction = i;
-        PQenqueue(&queue, node);
+        enqueue(&queue, node);
     }
 
     // Dijkstra's algorithm
-    while (!PQisEmpty(&queue)) {
+    while (!isEmpty(&queue)) {
         // Dequeue the vertex with the smallest distance
-        PQNode node = PQdequeue(&queue);
+        Node node = dequeue(&queue);
 
         // For each neighbor of the current vertex
         for (int i = 0; i < getNumVertices(G); i++) {
@@ -268,7 +243,7 @@ void dijkstra(Graph* G, int sourcex, int sourcey, int destinationx, int destinat
                     direction[i][dir] = node.direction;
 
                     // Enqueue the neighbor
-                    PQenqueue(&queue, (PQNode){i, cost, dir});
+                    enqueue(&queue, (Node){i, cost, dir});
                 }
             }
         }
@@ -289,7 +264,7 @@ void dijkstra(Graph* G, int sourcex, int sourcey, int destinationx, int destinat
     // Print the most efficient path with the fewest turns
     printf("\nThe most efficient path with the fewest turns is: ");
     int size = sqrt(getNumVertices(G));
-    PprintPath(prev, direction, destination, minDirection, size);
+    PrintPath(prev, direction, destination, minDirection, size);
     printf("\n");
 
     // Print the graph with the cheapest path highlighted
