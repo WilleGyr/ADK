@@ -11,7 +11,7 @@ int main( int argc, char *argv[]){
         printf("Incorrect argument am\nUsage: %s <filename> <start_x> <start_y> <end_x> <end_y>\n", argv[0]);
         return 1;
     }
-    
+
     for (int i = 2; i < 6; i++) {
         for (int j = 0; j < strlen(argv[i]); j++) {
             if (argv[i][j] < '0' || argv[i][j] > '9') {
