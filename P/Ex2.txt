@@ -1,0 +1,62 @@
+------------------------------------------
+G2_team01
+William Gyrulf (ID: 031112), Jakub Haczkiewicz (ID: 040508)
+
+Disclosure: to perform this exercise, I have utilised external resources and assistance:
+    - Lectures
+    - CLRS 4th Edition
+------------------------------------------
+
+(1)
+
+This exercise asked to implement a search algorithm to find the most cost effective path,
+from a given source node to a given destination node in a graph.
+The program should first import a graph from .txt files and create graphs out of them.
+
+The code used to test is implemented in the following file:
+    - Ex2.c
+    - dijkstra.c
+    - dijkstra.h
+    - graph.c
+    - graph.h
+    - queue.c
+    - queue.h
+
+Code Execution:
+To compile and execute the code:
+    $ gcc -c Ex2.c
+    $ gcc -c dijkstra.c
+    $ gcc -c graph.c
+    $ gcc -c queue.c
+    $ gcc Ex2.o dijkstra.o graph.o queue.o -o Ex2
+    $ ./Ex2 <filename> <start_x> <start_y> <end_x> <end_y>
+
+(2)
+
+Testing
+
+h1-3.txt
+
+The energy consumption of the most energy effective path from (0, 0) to (2, 2) is 10.
+
+Path:
+(0, 0) -> (1, 0) -> (2, 0) -> (2, 1) -> (2, 2)
+
+
+h4-5.txt
+
+The energy consumption most cost effective path from (0, 0) to (3, 4) is 15.
+
+Path:
+(0, 0) -> (1, 0) -> (1, 1) -> (1, 2) -> (2, 2) -> (3, 2) -> (3, 3) -> (3, 4)
+
+
+h10-11.txt
+
+The energy consumption of the most energy efficient path from (0, 0) to (10, 10) is .
+
+Path:
+(0, 0) -> (0, 1) -> (0, 2) -> (0, 3) -> (0, 4) -> (0, 5) ->(0, 6) ->
+(0, 7) -> (1, 7) -> (2, 7) -> (3, 7) -> (4, 7) -> (5, 7) -> (6, 7) ->
+(6, 8) -> (6, 9) ->(7, 9) -> (8, 9) -> (9, 9) -> (9, 10) -> (10, 10)
+
