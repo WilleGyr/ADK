@@ -1,0 +1,49 @@
+------------------------------------------
+G2_team01
+William Gyrulf (ID: 031112), Jakub Haczkiewicz (ID: 040508)
+
+Disclosure: to perform this exercise, I have utilised external resources and assistance:
+    - Lectures
+    - CLRS 4th Edition
+------------------------------------------
+
+(1)
+
+This exercise asked to find the shortest path from a source vertex to a destination vertex in a maze.
+
+We solved this by creating a graph where each square on the grid in the maze is its own vertex.
+Then we added undirected edges between every white square and the squares above, below, to the left and right of that square,
+but only if those squares also were white. 
+We decided to make the black walls in the maze by not giving those vertices in the graph any edges at all.
+Then we used our BFS function from the earlier exercises.
+We made a function that creates a n*n grid-like graph and doesn't add any edges to the specified vertices in the no_edge_vertices array.
+
+We didn't use coordinates to call each vertex, instead we just created n*n vertices and the first vertex is called 0 and the last is called n*n-1.
+In the given maze from the assignment the (1, 1) node is called 0, the (2, 1) node is called 10 and so on.
+The given source vertex (2, 7) is called 16 and the destination (7, 2) is called 61.
+
+We also made a printPath function that prints the shortest distance path from the source to destination.
+
+
+These are the results from applying this on the given maze from the assignment.
+
+Distance from 16 to 61: 24
+16 6 7 8 9 19 29 39 49 59 58 57 56 55 65 75 85 95 94 93 83 73 63 62 61
+
+The code used to test is implemented in the following file:
+    - A4_Ex4.c
+    - list.c
+    - list.h
+    - graph.c
+    - graph.h
+    - queue.c
+    - queue.h
+
+Code Execution:
+To compile and execute the code:
+    $ gcc -c A4_Ex4.c
+    $ gcc -c list.c
+    $ gcc -c queue.c
+    $ gcc -c graph.c
+    $ gcc -o A4_Ex4 A4_Ex4.o graph.o list.o queue.o
+    $ ./A4_Ex4

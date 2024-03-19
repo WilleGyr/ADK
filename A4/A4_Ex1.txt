@@ -1,0 +1,95 @@
+------------------------------------------
+G2_team01
+William Gyrulf (ID: 031112), Jakub Haczkiewicz (ID: 040508)
+
+Disclosure: to perform this exercise, I have utilised external resources and assistance:
+    - Lectures
+    - CLRS 4th Edition
+------------------------------------------
+
+(1)
+
+This exercise asked to implement the following functions and then test them on two given graphs.
+
+Graph* createGraph(int numVertices)
+This function creates a new graph with a specified number of vertices.
+It initializes the adjacency matrix and the vertices.
+It takes an integer numVertices as a parameter which specifies the number of vertices in the graph.
+
+void addDirectedEdge(Graph* graph, int src, int dest)
+This function adds a directed edge from src to dest in the graph.
+It takes a pointer to the graph, and two integers src and dest as parameters.
+
+void addUndirectedEdge(Graph* graph, int src, int dest)
+This function adds an undirected edge between src and dest in the graph.
+It takes a pointer to the graph, and two integers src and dest as parameters.
+
+int getNumVertices(Graph* graph)
+This function returns the number of vertices in the graph.
+It takes a pointer to the graph as a parameter.
+
+int getNumEdges(Graph* graph)
+This function returns the number of edges in the graph.
+It takes a pointer to the graph as a parameter.
+
+int isDirected(Graph* graph)
+This function checks if the graph is directed.
+It returns 1 if the graph is directed and 0 if it is not.
+It takes a pointer to the graph as a parameter.
+
+List* getInAdjs(Graph* graph, int vertex)
+This function returns a list of incoming adjacent vertices of a specified vertex.
+It takes a pointer to the graph and an integer vertex as parameters.
+
+List* getOutAdjs(Graph* graph, int vertex)
+This function returns a list of outgoing adjacent vertices of a specified vertex.
+It takes a pointer to the graph and an integer vertex as parameters.
+
+List* getLinked(Graph* graph, int vertex)
+This function returns a list of vertices linked to a specified vertex.
+It takes a pointer to the graph and an integer vertex as parameters.
+
+int hasEdge(Graph* graph, int src, int dest)
+This function checks if there is an edge between two specified vertices.
+It returns 1 if there is an edge and 0 if there is not.
+It takes a pointer to the graph and two integers src and dest as parameters.
+
+The code used to test is implemented in the following file:
+    - A4_Ex1.c
+    - list.c
+    - list.h
+    - graph.c
+    - graph.h
+    - queue.c
+    - queue.h
+
+Code Execution:
+To compile and execute the code:
+    $ gcc -c A4_Ex1.c
+    $ gcc -c list.c
+    $ gcc -c queue.c
+    $ gcc -c graph.c
+    $ gcc -o A4_Ex1 A4_Ex1.o graph.o list.o queue.o
+    $ ./A4_Ex1
+
+(2)
+
+Testing these functions gave us these results:
+
+Is G1 directed? No
+Is G2 directed? Yes
+
+G1 has 9 vertices and 13 edges
+G2 has 9 vertices and 14 edges
+
+G1 InAdjs for 9: 7 6 3 2 
+G2 InAdjs for 9: 7 2 
+
+G1 OutAdjs for 9: 7 6 3 2 
+G2 OutAdjs for 9: 6 3 
+
+(G1) Linked to 4: 8 3 1 
+(G2) Linked to 4: 8 3 1 
+
+G1 has edge from 3 to 9? Yes
+G2 has edge from 3 to 9? No

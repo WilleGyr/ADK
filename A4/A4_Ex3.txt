@@ -1,0 +1,66 @@
+------------------------------------------
+G2_team01
+William Gyrulf (ID: 031112), Jakub Haczkiewicz (ID: 040508)
+
+Disclosure: to perform this exercise, I have utilised external resources and assistance:
+    - Lectures
+    - CLRS 4th Edition
+------------------------------------------
+
+(1)
+
+This exercise asked to implement an algorithm to find strongly connected components in a graph.
+
+We used a pseudocode that we found in the textbook CLRS and worked with that.
+
+The function stronglyConnectedComponents is designed to find and print the strongly connected components of a graph.
+It starts by initializing necessary variables and arrays, including visited and finishTimes.
+It then performs a Depth-First Search (DFS) on the graph, using the DFS function, to populate the finishTimes array.
+After that, it transposes the graph using the transposeGraph function, essentially reversing all the edges.
+It then performs DFS again on the transposed graph,
+but this time starting from the vertex with the highest finish time and continuing in decreasing order of finish times.
+Each DFS call from this step prints a strongly connected component.
+The function finally frees the memory allocated for the arrays and the transposed graph.
+
+The code used to test is implemented in the following file:
+    - A4_Ex3.c
+    - list.c
+    - list.h
+    - graph.c
+    - graph.h
+    - queue.c
+    - queue.h
+
+Code Execution:
+To compile and execute the code:
+    $ gcc -c A4_Ex3.c
+    $ gcc -c list.c
+    $ gcc -c queue.c
+    $ gcc -c graph.c
+    $ gcc -o A4_Ex3 A4_Ex3.o graph.o list.o queue.o
+    $ ./A4_Ex3
+
+(2)
+
+This exercise asked to test the algorithm on the graph G2 from the assignment,
+and answer two questions about the results.
+
+2.1
+Strongly connected components of G2 starting at 2:
+Strongly connected component: 7 
+Strongly connected component: 2 6 9 
+Strongly connected component: 3 8 1 4 
+Strongly connected component: 5 
+
+2.2
+Strongly connected components of G2 starting at 1:
+Strongly connected component: 7 
+Strongly connected component: 2 6 9 
+Strongly connected component: 1 8 4 3 
+Strongly connected component: 5 
+
+3
+Vertex 7 will be the first one to be explored since it had the longest finishing time.
+
+4
+The output were the same from the two cases but in different order, since the algorithm started at different source vertices.

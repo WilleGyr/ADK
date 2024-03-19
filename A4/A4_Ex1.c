@@ -67,11 +67,11 @@ int main(){
     printf("\n");
 
     // getLinked
-    List* linkedG1 = getLinked(G1, 9);
-    printf("(G1) Linked to 9: ");
+    List* linkedG1 = getLinked(G1, 4);
+    printf("(G1) Linked to 4: ");
     printList(linkedG1);
-    List* linkedG2 = getLinked(G2, 9);
-    printf("(G2) Linked to 9: ");
+    List* linkedG2 = getLinked(G2, 4);
+    printf("(G2) Linked to 4: ");
     printList(linkedG2);
     printf("\n");
 

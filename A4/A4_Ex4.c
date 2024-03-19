@@ -16,11 +16,8 @@ int main(){
 
     // Create graph
     Graph* G2 = createGraph(100);
-
-    // The graph is a 10x10 grid. I want each vertice to have an edge to the vertice above, below, to the left and to the right.
-    // The following vertices should not have any edges at all: 18, 28, 38, 41, 42, 43, 44, 45, 46, 47, 48, 54, 64, 74 and 84.
     
-    int no_edge_vertices[] = {18, 28, 38, 41, 42, 43, 44, 45, 46, 47, 48, 54, 64, 74, 84};
+    int no_edge_vertices[] = {18, 28, 38, 41, 42, 43, 44, 45, 46, 47, 48, 54, 64, 74, 84, 0, 10, 20, 30, 40, 50, 60, 70};
     int no_edge_vertices_count = sizeof(no_edge_vertices) / sizeof(no_edge_vertices[0]);
 
     for (int i = 0; i < 100; i++) {
@@ -44,6 +41,7 @@ int main(){
 
     // Print the path from 16 to 61
     printPath(G2, 16, 61);
+    printf("\n");
 
     return 0;
 }

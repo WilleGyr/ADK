@@ -40,19 +40,21 @@ int main(){
 
     // 2
     // birthdate = 031112
+
     
     // 2.1
     // Source: 2
-    BFS(G1, 2);
-    printf("G1\n");
-    for (int i = 1; i <= G1->numVertices; i++) {
-        if (G1->vertices[i].distance != -1) {
-            printf("Distance from 2 to %d: %d\n", i, G1->vertices[i].distance);
+    BFS(G2, 2);
+    printf("G2\n");
+    for (int i = 1; i <= G2->numVertices; i++) {
+        if (G2->vertices[i].distance != -1) {
+            printf("Distance from 2 to %d: %d\n", i, G2->vertices[i].distance);
         } else {
             printf("No path from 2 to %d\n", i);
         }
     }
-
+    
+    /*
     // 2.2
     // Source: 1
     BFS(G2, 1);
@@ -64,6 +66,7 @@ int main(){
             printf("No path from 1 to %d\n", i);
         }
     }
+    */
 
 
     return 0;
