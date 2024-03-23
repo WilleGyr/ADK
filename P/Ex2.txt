@@ -10,8 +10,14 @@ Disclosure: to perform this exercise, I have utilised external resources and ass
 (1)
 
 This exercise asked to implement a search algorithm to find the most cost effective path,
-from a given source node to a given destination node in a graph.
-The program should first import a graph from .txt files and create graphs out of them.
+from a given source vertex to a given destination vertex in a graph.
+The program should first import a grid from a given .txt file and create graph out of it.
+
+Graph* create_graph_from_file(char* filename)
+
+
+void dijkstra(Graph* G, int sourcex, int sourcey, int destinationx, int destinationy)
+
 
 The code used to test is implemented in the following file:
     - Ex2.c
