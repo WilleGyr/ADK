@@ -9,7 +9,7 @@
 int main( int argc, char *argv[]){
     // Check if the number of arguments is correct
     if (argc != 6) {
-        printf("Incorrect argument am\nUsage: %s <filename> <start_x> <start_y> <end_x> <end_y>\n", argv[0]);
+        printf("Incorrect argument amount\nUsage: %s <filename> <start_x> <start_y> <end_x> <end_y>\n", argv[0]);
         return 1;
     }
 
