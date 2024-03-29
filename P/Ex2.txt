@@ -1,1 +1,72 @@
+------------------------------------------
+G2_team01
+Jakub Haczkiewicz (ID: 040508), William Gyrulf (ID: 031112)
+
+Disclosure: to perform this exercise, I have utilised external resources and assistance:
+    - Github Copilot
+    - Lectures
+    - CLRS 4th Edition
+------------------------------------------
+
+(1)
+
+This exercise asked to implement Dijkstras algorithm on graphs, taking into account the added weight of turning.
+Only functions created for this project are listed here as the other used functions are described in the .txt files of assignments 1-4
+
+int is_no_edge_vertex(int vertex, int* no_edge_vertices, int no_edge_vertices_count)
+This function checks if a vertex is in the list of no-edge vertices
+Does so by comparing the list of no-edge-vertices and compares each with the given vertex
+Returns 1 or 0 (True or False)
+
+Graph* create_graph_from_file(char* filename)
+Takes the filename, finds the correct file and reads it, if unable to read throws an error
+Gets and assigns the size of the graph by reading the amount of non-empty spaces on the first line
+Creates an empty graph using Graph* createGraph(int numVertices) and an empty array of no-edge-vertices with said size (squared)
+Rewinds back to the beginning of the file, reading it and appending the weight of each element into the graph, if the element is 0 then it is also appended to the no-egde-vertices array
+Goes through the graph and adds edges orthogonally between all vertices except those that have a weigh of zero by checking the no-edge-vertices array
+Returns the graph
+
+int getDirection(int current, int next)
+Gets the direction by checking if the next vertex has a x or y coordinate that is either 1 higher or lower than the current vertex
+
+void PrintPath(int prev[][DIRECTIONS], int direction[][DIRECTIONS], int vertex, int dir, int size)
+Recursively calls itself, going through the shortest path and printing the coordinate of each vertex as it goes along
+
+void printGraphWithPath(Graph* G, int prev[][DIRECTIONS], int direction[][DIRECTIONS], int destination, int minDirection)
+Similarly to PrintPath, it goes through the shortest path but instead appends each vertex to an array isOnPath[]
+Goes through the entire graph, printing each element in white unless:
+- It is in the array isOnPath[], where it then will be printed in green to show the path
+- It has a weight 0, where it then will be printed in red to visualise impassable "walls"
+
+void dijkstra(Graph* G, int sourcex, int sourcey, int destinationx, int destinationy)
+Creates arrays to store distances, previous vertices, directions, and turns and one to store the priority queue
+Initializes distances to infinity, previous vertices to -1, and turns to 0
+Changes distance to each adjacent vertex to be equal to the cost of the source vertex
+Implements dijkstras algortihm with the amount of turns as an additional, albeit slightly less important, variable when updating the cost for each vertex. (Cost for vertex updates only if either the cost is lower or cost is equal but with fewer turns)
+Finds the direction with the smallest cost and the fewest turns at the end vertex
+Prints the energy consumption of the most efficient path from the source to the end
+Print the most efficient path with the lowest cost and fewest turns using PrintPath
+Print the graph with the cheapest path highlighted using printGraphWithPath
+
+The main(int argc, char *argv[]) function takes arguments from user, creates a graph and calls dijksrta on said graph using the arguments.
+
+The code used to test is implemented in the following file:
+    - Ex2.c
+    - graph.c
+    - graph.h
+    - queue.c
+    - queue.h
+
+Code Execution:
+To compile and execute the code:
+    $ gcc -c Ex2.c
+    $ gcc -c queue.c
+    $ gcc -c graph.c
+    $ gcc -o Ex2 Ex2.o graph.o list.o queue.o
+    $ ./Ex2 [filename] [start x-coordinate] [start y-coordinate] [end x-coordinate] [end y-coordinate] (coordinates start at 0)
+
+(2)
+
+Testing this file:
+
 
