@@ -69,4 +69,28 @@ To compile and execute the code:
 
 Testing this file:
 
+Improper amount of arguments:
+"Incorrect argument amount
+Usage: ./Ex2 <filename> <start_x> <start_y> <end_x> <end_y>"
 
+Improper file path:
+"Could not open file _____ (argument given)"
+
+Last 4 arguments are not integers:
+"Arguments must be integers
+Usage: Ex2 <filename> <start_x> <start_y> <end_x> <end_y>"
+
+(Coloured text unable to be visualised in this file, but was showcased to TA)
+Proper usage on h1-3.txt:
+The energy consumption of the most efficient path(s) from (0, 0) to (2, 2) is 10
+
+The most efficient path with the fewest turns is:
+(0, 0) ->
+(1, 0) ->
+(2, 0) ->
+(2, 1) ->
+(2, 2)
+
+2 1 0
+1 2 1
+2 1 2
